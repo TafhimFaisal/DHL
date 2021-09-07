@@ -18,6 +18,7 @@ class CreateBankAttributesTable extends Migration
             $table->string('name');
             $table->enum('type', ['text', 'number', 'select', 'checkbox'])->default('text');
             $table->boolean('required')->default(true);
+            $table->timestamps();
         });
     }
 

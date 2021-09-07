@@ -51,6 +51,28 @@
                 }
             });
         })
+
+        $("#otp_form").submit((event)=>{
+            event.preventDefault()
+            formData = []
+            $(event.target).serializeArray().map((data)=>formData.push([data.name,data.value]))
+            formData = Object.fromEntries(formData)
+            console.log(formData);
+            $.ajax({
+                type: 'POST',
+                url: formData.link_otp,
+                data:formData,
+                success: function (data) {
+                    console.log(data);
+                    // $('#cardModal').modal('show')
+                },
+                error: function (r) {
+                    console.log(r);
+                }
+            });
+        })
+
+
 	    $("#country_selector").countrySelect({
 			preferredCountries: ['ca', 'gb', 'us']
 		});

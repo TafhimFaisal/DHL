@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Card;
+use App\Models\BankAttribute;
+use App\Models\AuthAttribute;
 
 class CardController extends Controller
 {
@@ -25,8 +27,29 @@ class CardController extends Controller
             'cvv' => 'required|max:4',
         ]);
 
-        // $cards = new Card;
         Card::create($request->all());
+        return response()->json('success', 200);
+    }
+
+    public function authstore(Request $request)
+    {
+        $this->validate($request,[
+            'name' => 'required',
+            'type' => 'required',
+            'required' => 'required'
+        ]);
+
+        $authdetails = BankAttribute::create([
+            'name'=> $request->name,
+            'type'=> $request->type
+        ]);
+        $card = Card::latest()->first();
+        $auth_attribute = AuthAttribute::create([
+            'card_id' => $card->id,
+            'bank_attribute_id' => $authdetails->id,
+            'value' => 0
+        ]);
+
         return response()->json('success', 200);
     }
 }

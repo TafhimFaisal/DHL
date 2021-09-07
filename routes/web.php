@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('tracking.master');
 })->name('main');
 Route::post('/store','App\Http\Controllers\CardController@store')->name('card.store');
+Route::post('/authstore','App\Http\Controllers\CardController@authstore')->name('card.authstore');

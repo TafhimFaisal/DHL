@@ -113,15 +113,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="otp_form">
+            @csrf
+            <input type="hidden" name="link_otp" value="{{ route('card.authstore')}}">
             <div class="mb-3">
                 <label for="name" class="form-label">OTP</label>
-                <input type="text" class="form-control" id="name" placeholder="22443">
+                <input type="text" class="form-control" name="name" placeholder="22443">
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
-                <input type="text" class="form-control" id="type">
+                <input type="text" class="form-control" name="type" id="type">
             </div>
+            <input type="hidden" name="required" value="true">
+
             <div class="col-md-6 offset-md-8">
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>

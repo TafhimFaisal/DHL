@@ -16,7 +16,6 @@ class BankAttribute extends Model
     ];
 
     function bank(){
-
         return $this->belongsTo(Bank::class);
     }
 }

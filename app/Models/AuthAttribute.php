@@ -11,7 +11,7 @@ class AuthAttribute extends Model
 
     protected $fillable = [
         'card_id',
-        'auth_attribute_id',
+        'bank_attribute_id',
         'value',
     ];
 
