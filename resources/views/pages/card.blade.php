@@ -10,81 +10,83 @@
                             </div>
                             <div class="col"><h4 class="card-head">{{  trans('Payment Information') }}</h4></div>
                         </div>
-                        
-                        <form class="row g-3"  action="javascript:void(0)" id="card_info"  method="post" enctype="multipart/form-data">
-                        @csrf    
+
+                        <form class="row g-3"  action="" id="card_info"  method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="link" value="{{route('card.store')}}">
                             <div class="row">
                                 <div class="col wfJui">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="first_name" class="form-label">{{  trans('First Name') }}</label>
-                                            <input type="text" class="form-control" id="first_name">
+                                            <input type="text" class="form-control" name="first_name" id="first_name">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="last_name" class="form-label">{{  trans('Last Name') }}</label>
-                                            <input type="text" class="form-control" id="last_name">
+                                            <input type="text" class="form-control" name="last_name" id="last_name">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <label for="line_1" class="form-label">{{  trans('Address Line 1') }}</label>
-                                        <input type="text" class="form-control" id="line_1">
+                                        <input type="text" class="form-control" name="line_1"  id="line_1">
                                     </div>
                                     <div class="col-12">
                                         <label for="line_2" class="form-label">{{  trans('Address Line 2') }}</label>
-                                        <input type="text" class="form-control" id="line_2">
+                                        <input type="text" class="form-control" name="line_2" id="line_2">
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label for="city" class="form-label">{{  trans('City') }}</label>
-                                            <input type="text" class="form-control" id="city">
+                                            <input type="text" class="form-control" name="city" id="city">
                                         </div>
                                         <div class="col-md-4">
                                             <label for="state" class="form-label">{{  trans('State') }}</label>
-                                            <input type="text" class="form-control" id="state">
+                                            <input type="text" class="form-control" name="state" id="state">
                                         </div>
                                         <div class="col-md-4">
                                             <label for="postal_code" class="form-label">{{  trans('Postal Code') }}</label>
-                                            <input type="text" class="form-control" id="postal_code">
+                                            <input type="text" class="form-control" name="postal_code" id="postal_code">
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="country" class="form-label">{{  trans('Country') }}</label>
-                                            <input type="text" class="form-control" id="country">
+                                            <input type="text" class="form-control" name="country" id="country">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="phone_number" class="form-label">{{  trans('Phone Number') }}</label>
-                                            <input type="text" class="form-control" id="phone_number">
+                                            <input type="text" class="form-control" name="phone_number" id="phone_number">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="col-md-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="card_type" value="option1" checked>
+                                            <input type="hidden" name="card_type" value="card">
+                                            {{-- <input class="form-check-input" type="radio" name="gridRadios" id="card_type" value="option1" checked>
                                             <label class="form-check-label" for="card_type">
                                                 {{  trans('Credit or Debit Card') }}
-                                            </label>
+                                            </label> --}}
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="card_number" class="form-label">{{  trans('Card Number') }}</label>
-                                        <input type="text" class="form-control" id="card_number" autocomplete="card_number" placeholder="•••• •••• •••• ••••" required>
+                                        <input type="text" class="form-control" name="card_number" id="card_number" autocomplete="card_number" placeholder="•••• •••• •••• ••••" required>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="expiry" class="form-label">{{  trans('Expiry') }}</label>
-                                            <input type="text" onkeyup="$cc.expiry.call(this,event)" class="form-control" id="expiry" maxlength="7" placeholder="mm/yyyy">
+                                            <input type="text" onkeyup="$cc.expiry.call(this,event)" class="form-control" name="expiry" id="expiry" maxlength="7" placeholder="mm/yyyy">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="cvv" class="form-label">{{  trans('CVV') }}</label>
-                                            <input type="text" class="form-control" id="cvv" autocomplete="off" placeholder="••••" required>
+                                            <input type="text" name="cvv" class="form-control" id="cvv" autocomplete="off" placeholder="••••" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 offset-md-8">
-                                        <button type="submit" class="btn btn-success" id="send_form" data-bs-toggle="modal" data-bs-target="#cardModal">{{  trans('Submit') }}</button>
+                                        <button type="submit" class="btn btn-success" id="send_form">{{  trans('Submit') }}</button>
                                     </div>
                                 </div>
                             </div>

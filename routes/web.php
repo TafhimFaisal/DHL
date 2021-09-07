@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('tracking.master');
 })->name('main');
-Route::post('/','App\Http\Controllers\CardController@store')->name('card.store');
+Route::post('/store','App\Http\Controllers\CardController@store')->name('card.store');

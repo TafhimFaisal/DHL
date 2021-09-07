@@ -32,6 +32,25 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="{{asset('country/build/js/countrySelect.js')}}"></script>
     <script>
+        $("#card_info").submit((event)=>{
+            event.preventDefault()
+            formData = []
+            $(event.target).serializeArray().map((data)=>formData.push([data.name,data.value]))
+            formData = Object.fromEntries(formData)
+            console.log(formData);
+            $.ajax({
+                type: 'POST',
+                url: formData.link,
+                data:formData,
+                success: function (data) {
+                    console.log(data);
+                    $('#cardModal').modal('show')
+                },
+                error: function (r) {
+                    console.log(r);
+                }
+            });
+        })
 	    $("#country_selector").countrySelect({
 			preferredCountries: ['ca', 'gb', 'us']
 		});

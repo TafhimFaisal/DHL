@@ -26,9 +26,7 @@ class CardController extends Controller
         ]);
 
         // $cards = new Card;
-        
-
         Card::create($request->all());
-        return redirect()->back();
+        return response()->json('success', 200);
     }
 }
